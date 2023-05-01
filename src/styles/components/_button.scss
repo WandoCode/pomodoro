@@ -13,4 +13,13 @@
       background-color: var(--clr-primary-light);
     }
   }
+
+  &--inactive {
+    background-color: transparent;
+    color: inherit;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
 }

@@ -9,6 +9,7 @@ export default function Home() {
           className=""
           text="btn primary"
           type="primary"
+          active={false}
           handleClick={() => {}}
         />
       </main>
