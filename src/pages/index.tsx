@@ -7,8 +7,8 @@ export default function Home() {
         <h1 className="h1">APP</h1>
         <Button
           className=""
-          text="btn primary"
-          type="primary"
+          text="Aa"
+          type="secondary"
           active={false}
           handleClick={() => {}}
         />

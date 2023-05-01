@@ -10,13 +10,15 @@ export const Button = ({
   className,
   text,
   type,
-  active,
+  active = true,
   handleClick,
   ...props
 }: Props) => {
   const btnClass = {
-    primary: `btn btn--primary ${active ? null : 'btn--inactive'}`,
-    secondary: 'btn btn--secondary ',
+    primary: `btn btn--primary ${active ? null : 'btn--primary-inactive'} `,
+    secondary: `btn btn--secondary ${
+      active ? null : 'btn--secondary-inactive'
+    } `,
   }
 
   return (
