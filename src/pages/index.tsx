@@ -9,7 +9,7 @@ export default function Home() {
           className=""
           text="Aa"
           type="secondary"
-          active={false}
+          active={true}
           handleClick={() => {}}
         />
       </main>
