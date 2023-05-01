@@ -1,17 +1,11 @@
-import { Button } from '@/components/atoms/Button'
+import InputNumber from '@/components/atoms/InputNumber'
 
 export default function Home() {
   return (
     <>
       <main>
         <h1 className="h1">APP</h1>
-        <Button
-          className=""
-          text="Aa"
-          type="secondary"
-          active={true}
-          handleClick={() => {}}
-        />
+        <InputNumber label="test" changeValue={(i) => {}} />
       </main>
     </>
   )
