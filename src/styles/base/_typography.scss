@@ -5,6 +5,42 @@
 
 body {
   color: var(--clr-neutral-400);
-  font-family: $text-font-stack;
+  font-family: $text-font-a;
   font-size: var(--fs-sm-300);
+  font-weight: bold;
+}
+
+.h1 {
+  font-size: rem(100);
+  line-height: rem(120);
+  letter-spacing: rem(-5);
+}
+
+.h2 {
+  font-size: rem(28);
+  line-height: rem(34);
+}
+
+.h3 {
+  font-size: rem(16);
+  line-height: rem(19);
+  letter-spacing: rem(15);
+  text-transform: uppercase;
+}
+
+.h4 {
+  font-size: rem(13);
+  line-height: rem(16);
+  letter-spacing: rem(5);
+  text-transform: uppercase;
+}
+
+.text-lg {
+  font-size: rem(14);
+  line-height: rem(18);
+}
+
+.text-sm {
+  font-size: rem(12);
+  line-height: rem(14);
 }
