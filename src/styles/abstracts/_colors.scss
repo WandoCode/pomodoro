@@ -42,4 +42,8 @@ $colors: (
       }
     }
   }
+
+  // Interface for default values for primary colors.
+  --clr-primary: var(--clr-primary-a-400);
+  --clr-primary-light: var(--clr-primary-a-300);
 }

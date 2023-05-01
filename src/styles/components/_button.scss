@@ -1,8 +1,16 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
-
 @use '../abstracts/' as *;
 
-.button {
+.btn {
+  border: none;
+  cursor: pointer;
+
+  &--primary {
+    background-color: var(--clr-primary);
+    padding: 1.5em 1.92em;
+    border-radius: 2.21em;
+
+    &:hover {
+      background-color: var(--clr-primary-light);
+    }
+  }
 }
