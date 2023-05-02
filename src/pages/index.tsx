@@ -16,7 +16,7 @@ export default function Home() {
         changeValue={setCurrPomodoroType}
         className="container"
       />
-      <Counter />
+      <Counter timePercentage={90} timeLeft="17:30" />
     </main>
   )
 }
