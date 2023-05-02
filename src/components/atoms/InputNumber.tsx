@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import ArrowUp from './ArrowUp'
+import ArrowDown from './ArrowDown'
 
 interface InputNumberCompProps {
   label: string
@@ -7,12 +9,16 @@ interface InputNumberCompProps {
   increaseByOne: () => void
   decreaseByOne: () => void
   handleChange: (str: string) => void
+  className?: string
+  [key: string]: any
 }
 
 interface InputNumberProps {
   label: string
   initialValue?: number
   changeValue: (num: number) => void
+  className?: string
+  [key: string]: any
 }
 
 const InputNumberComp = ({
@@ -21,10 +27,11 @@ const InputNumberComp = ({
   increaseByOne,
   decreaseByOne,
   handleChange,
+  className,
   ...props
 }: InputNumberCompProps) => {
   return (
-    <div className="input-number" {...props}>
+    <div className={`input-number ${className}`} {...props}>
       <label>{label} </label>
 
       <div className="input-number__input-wrapper">
@@ -40,24 +47,14 @@ const InputNumberComp = ({
         <div className="input-number__btns-wrapper">
           <button className="input-number__btn-arrow" onClick={increaseByOne}>
             <span className="visually-hidden">Increase by 1</span>
-            <Image
-              src="icon-arrow-up.svg"
-              alt=""
-              height={7}
-              width={14}
-              className="input-number__arrow"
-            />
+
+            <ArrowUp className="input-number__arrow" />
           </button>
 
           <button className="input-number__btn-arrow" onClick={decreaseByOne}>
             <span className="visually-hidden">Decrease by 1</span>
-            <Image
-              src="icon-arrow-down.svg"
-              alt=""
-              height={7}
-              width={14}
-              className="input-number__arrow"
-            />
+
+            <ArrowDown className="input-number__arrow" />
           </button>
         </div>
       </div>
@@ -83,16 +80,18 @@ const InputNumber = ({
   const handleIncreaseByOne = () => {
     const numericValue = parseInt(currValue, 10)
 
-    if (!numericValue || numericValue < 0) return
+    if (isNaN(numericValue) || numericValue < 0) return
 
     const newValue = numericValue + 1
+    console.log(newValue.toString())
+
     setCurrValue(newValue.toString())
   }
 
   const handleDecreaseByOne = () => {
     const numericValue = parseInt(currValue, 10)
 
-    if (!numericValue || numericValue < 0) return
+    if (isNaN(numericValue) || numericValue < 0) return
 
     const newPositiveValue = numericValue - 1 >= 0 ? numericValue - 1 : 0
     setCurrValue(newPositiveValue.toString())
@@ -102,7 +101,7 @@ const InputNumber = ({
     if (str.length === 0) setCurrValue('0')
 
     const numericValue = parseInt(str, 10)
-    if (!numericValue || numericValue < 0) return
+    if (isNaN(numericValue) || numericValue < 0) return
 
     setCurrValue(numericValue.toString())
   }

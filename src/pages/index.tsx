@@ -5,7 +5,11 @@ export default function Home() {
     <>
       <main>
         <h1 className="h1">APP</h1>
-        <InputNumber label="test" changeValue={(i) => {}} />
+        <InputNumber
+          label="test"
+          changeValue={(i) => {}}
+          className="text-sm fc-neutral-600"
+        />
       </main>
     </>
   )
