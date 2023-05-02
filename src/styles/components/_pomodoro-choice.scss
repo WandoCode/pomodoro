@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+
+.pomodoro-choice {
+  justify-self: stretch;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  padding: rem(7);
+  background-color: var(--clr-secondary-800);
+
+  border-radius: rem(32);
+
+  &__choice {
+    width: 100%;
+  }
+}

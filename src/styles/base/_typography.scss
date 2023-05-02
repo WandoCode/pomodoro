@@ -53,3 +53,13 @@ body {
 input[type='number'] {
   font-size: rem(14);
 }
+
+.pomodoro-choice {
+  &__choice {
+    color: var(--clr-secondary-800);
+
+    &.btn--primary-inactive {
+      color: var(--clr-neutral-800);
+    }
+  }
+}

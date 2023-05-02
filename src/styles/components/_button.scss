@@ -5,8 +5,8 @@
   cursor: pointer;
 
   &--primary {
+    height: rem(48);
     background-color: var(--clr-primary);
-    padding: 1.5em 1.92em;
     border-radius: 2.21em;
 
     &:hover {
