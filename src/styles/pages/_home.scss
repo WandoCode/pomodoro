@@ -1,8 +1,37 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
-// -----------------------------------------------------------------------------
+@use '../abstracts/' as *;
+
 .home {
+  height: 100dvh;
+
   display: grid;
-  justify-items: center;
   justify-content: stretch;
+  grid-template-rows: min-content auto;
+
+  &__sup {
+    display: grid;
+    grid-template-rows: auto min-content;
+
+    gap: 35%;
+
+    margin-top: 2rem;
+    z-index: 1;
+  }
+
+  &__title,
+  &__settings {
+    justify-self: center;
+  }
+
+  &__down {
+    display: grid;
+    justify-items: center;
+    align-content: space-evenly;
+
+    z-index: 0;
+  }
+
+  &__settings {
+    background-color: transparent;
+    border: none;
+  }
 }

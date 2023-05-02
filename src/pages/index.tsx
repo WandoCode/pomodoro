@@ -1,5 +1,6 @@
 import Counter from '@/components/molecules/Counter'
 import PomodoroTypesChoice from '@/components/molecules/PomodoroTypesChoice'
+import { Settings } from '@/components/svgs/Settings'
 import { formatSecondToMinuteString } from '@/helpers/number'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -52,19 +53,27 @@ export default function Home() {
 
   return (
     <main className="home">
-      <h1 className="title">pomodoro</h1>
-      <PomodoroTypesChoice
-        choices={POMODORO_TYPES}
-        value={currPomodoroType}
-        changeValue={setCurrPomodoroType}
-        className="container"
-      />
-      <Counter
-        timePercentage={(remainingTime * 100) / totalTime}
-        timeLeft={formatSecondToMinuteString(remainingTime)}
-        onToggleAction={toggleAction}
-        textAction={getTextAction()}
-      />
+      <div className="home__sup">
+        <h1 className="home__title title">pomodoro</h1>
+        <PomodoroTypesChoice
+          choices={POMODORO_TYPES}
+          value={currPomodoroType}
+          changeValue={setCurrPomodoroType}
+          className="container home__choices"
+        />
+      </div>
+      <div className="home__down">
+        <Counter
+          timePercentage={(remainingTime * 100) / totalTime}
+          timeLeft={formatSecondToMinuteString(remainingTime)}
+          onToggleAction={toggleAction}
+          textAction={getTextAction()}
+          className="home__counter"
+        />
+        <button className="home__settings">
+          <Settings />
+        </button>
+      </div>
     </main>
   )
 }
