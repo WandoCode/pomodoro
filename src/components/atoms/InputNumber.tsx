@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react'
 
 interface InputNumberCompProps {
   label: string
-  value: number
+  value: string
   increaseByOne: () => void
   decreaseByOne: () => void
+  handleChange: (str: string) => void
 }
 
 interface InputNumberProps {
@@ -19,6 +20,7 @@ const InputNumberComp = ({
   value,
   increaseByOne,
   decreaseByOne,
+  handleChange,
   ...props
 }: InputNumberCompProps) => {
   return (
@@ -26,17 +28,38 @@ const InputNumberComp = ({
       <label>{label} </label>
 
       <div className="input-number__input-wrapper">
-        <input type="number" name="time" id="time" min={0} value={value} />
+        <input
+          type="number"
+          name="time"
+          id="time"
+          min={0}
+          value={value}
+          onChange={(e) => handleChange(e.target.value)}
+        />
 
-        <button className="input-number-arrow-up" onClick={increaseByOne}>
-          <span className="visually-hidden">Increase by 1</span>
-          <Image src="icon-arrow-up.svg" alt="" height={6} width={12} />
-        </button>
+        <div className="input-number__btns-wrapper">
+          <button className="input-number__btn-arrow" onClick={increaseByOne}>
+            <span className="visually-hidden">Increase by 1</span>
+            <Image
+              src="icon-arrow-up.svg"
+              alt=""
+              height={7}
+              width={14}
+              className="input-number__arrow"
+            />
+          </button>
 
-        <button className="input-number-arrow-down" onClick={decreaseByOne}>
-          <span className="visually-hidden">Decrease by 1</span>
-          <Image src="icon-arrow-down.svg" alt="" height={6} width={12} />
-        </button>
+          <button className="input-number__btn-arrow" onClick={decreaseByOne}>
+            <span className="visually-hidden">Decrease by 1</span>
+            <Image
+              src="icon-arrow-down.svg"
+              alt=""
+              height={7}
+              width={14}
+              className="input-number__arrow"
+            />
+          </button>
+        </div>
       </div>
     </div>
   )
@@ -48,19 +71,40 @@ const InputNumber = ({
   initialValue = 0,
   ...props
 }: InputNumberProps) => {
-  const [currValue, setCurrValue] = useState(initialValue)
+  const [currValue, setCurrValue] = useState(initialValue.toString())
 
   useEffect(() => {
-    changeValue(currValue)
+    const numericalValue = parseInt(currValue)
+
+    if (!numericalValue) return
+    changeValue(numericalValue)
   }, [currValue, changeValue])
 
   const handleIncreaseByOne = () => {
-    setCurrValue(currValue + 1)
+    const numericValue = parseInt(currValue, 10)
+
+    if (!numericValue || numericValue < 0) return
+
+    const newValue = numericValue + 1
+    setCurrValue(newValue.toString())
   }
 
   const handleDecreaseByOne = () => {
-    const newPositiveValue = currValue - 1 >= 0 ? currValue - 1 : 0
-    setCurrValue(newPositiveValue)
+    const numericValue = parseInt(currValue, 10)
+
+    if (!numericValue || numericValue < 0) return
+
+    const newPositiveValue = numericValue - 1 >= 0 ? numericValue - 1 : 0
+    setCurrValue(newPositiveValue.toString())
+  }
+
+  const handleChange = (str: string) => {
+    if (str.length === 0) setCurrValue('0')
+
+    const numericValue = parseInt(str, 10)
+    if (!numericValue || numericValue < 0) return
+
+    setCurrValue(numericValue.toString())
   }
 
   return (
@@ -69,6 +113,7 @@ const InputNumber = ({
       value={currValue}
       increaseByOne={handleIncreaseByOne}
       decreaseByOne={handleDecreaseByOne}
+      handleChange={handleChange}
       {...props}
     />
   )
