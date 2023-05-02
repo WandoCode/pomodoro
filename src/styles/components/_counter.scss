@@ -10,8 +10,8 @@
   align-items: center;
   justify-content: center;
 
-  height: calc(300px - $border);
-  width: calc(300px - $border);
+  height: 300px;
+  width: 300px;
 
   border: solid $border transparent;
   border-radius: 100%;
@@ -38,6 +38,11 @@
       stroke: var(--clr-primary-a-400);
       stroke-linecap: round;
     }
+  }
+
+  &__time {
+    width: 2.375em;
+    text-align: left;
   }
 
   &__action {
