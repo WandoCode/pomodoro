@@ -22,6 +22,10 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background-color: var(--clr-secondary-700);
+}
+
 button:focus-visible,
 input:focus-visible {
   outline: 1px solid var(--clr-secondary-400);
