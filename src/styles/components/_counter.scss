@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+.counter {
+  $border: 1rem;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(300px - $border);
+  width: calc(300px - $border);
+
+  border: solid $border transparent;
+  border-radius: 100%;
+  background-clip: padding-box;
+  background-color: var(--clr-secondary-800);
+  box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
+
+  &:before {
+    content: '';
+
+    position: absolute;
+    inset: -$border;
+
+    z-index: -1;
+
+    border-radius: 100%;
+    background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+  }
+
+  &__circle {
+    position: absolute;
+    padding: rem(10);
+    & path {
+      stroke: var(--clr-primary-a-400);
+      stroke-linecap: round;
+    }
+  }
+}

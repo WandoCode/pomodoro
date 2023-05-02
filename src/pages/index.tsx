@@ -1,4 +1,5 @@
 import InputNumber from '@/components/atoms/InputNumber'
+import Counter from '@/components/molecules/Counter'
 import PomodoroTypesChoice from '@/components/molecules/PomodoroTypesChoice'
 import { useState } from 'react'
 
@@ -15,6 +16,7 @@ export default function Home() {
         changeValue={setCurrPomodoroType}
         className="container"
       />
+      <Counter />
     </main>
   )
 }
