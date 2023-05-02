@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import ArrowUp from './ArrowUp'
-import ArrowDown from './ArrowDown'
+import ArrowUp from '../svgs/ArrowUp'
+import ArrowDown from '../svgs/ArrowDown'
 
 interface InputNumberCompProps {
   label: string
