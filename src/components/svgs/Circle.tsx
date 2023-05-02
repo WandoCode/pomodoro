@@ -8,7 +8,7 @@ export const Circle = ({ className, timePercentage }: Props) => {
     <svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="-5 -5 310 310"
+      viewBox="-8 -8 316 316"
     >
       <path
         d="M 0 150 A 100 100 90 0 0 300 150 A 100 100 90 0 0 0 150 Z"
