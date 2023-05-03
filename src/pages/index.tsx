@@ -1,12 +1,15 @@
 import Counter from '@/components/molecules/Counter'
 import PomodoroTypesChoice from '@/components/molecules/PomodoroTypesChoice'
 import { Settings } from '@/components/svgs/Settings'
+import { GlobalContext } from '@/contexts/GlobalStatesProvider'
+
 import { formatSecondToMinuteString } from '@/helpers/number'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 export default function Home() {
-  const POMODORO_TYPES = ['pomodoro', 'short break', 'long break']
-  const [currPomodoroType, setCurrPomodoroType] = useState(POMODORO_TYPES[0])
+  const { POMODORO_TYPES, currPomodoroType, setCurrPomodoroType } =
+    useContext(GlobalContext)
+
   const [inPause, setInPause] = useState(true)
   const [totalTime, setTotalTime] = useState(5) // Temps total du minuteur en secondes
   const [remainingTime, setRemainingTime] = useState(3) // Temps restant en secondes

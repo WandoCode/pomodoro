@@ -1,9 +1,10 @@
+import { PomodoroTypes } from '@/contexts/GlobalStatesProvider'
 import { Button } from '../atoms/Button'
 
 interface Props {
-  choices: string[]
+  choices: PomodoroTypes[]
   value: string
-  changeValue: (newValue: string) => void
+  changeValue: (newValue: PomodoroTypes) => void
   className?: string
 }
 
