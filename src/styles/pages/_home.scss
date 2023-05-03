@@ -16,12 +16,12 @@
     z-index: 1;
 
     @include breakpoint(medium) {
-      margin-top: rem(80);
-      gap: 55px;
+      margin-top: 7.8dvh;
+      gap: 5.3dvh;
     }
 
     @include breakpoint(large) {
-      margin-top: 1.5vw;
+      margin-top: 6dvh;
       gap: 6.5dvh;
     }
   }
@@ -43,7 +43,6 @@
     z-index: 0;
 
     @include breakpoint(large) {
-      min-height: 600px;
     }
   }
 

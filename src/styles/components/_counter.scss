@@ -27,8 +27,15 @@
   @include breakpoint(medium) {
     max-height: 410px;
     max-width: 410px;
+    min-height: 340px;
+    min-width: 340px;
 
+    width: 51.25dvh;
     border-width: $border-md;
+  }
+
+  @include breakpoint(large) {
+    gap: 5%;
   }
 
   &:before {
