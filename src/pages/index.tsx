@@ -1,6 +1,7 @@
 import Counter from '@/components/molecules/Counter'
 import PomodoroTypesChoice from '@/components/molecules/PomodoroTypesChoice'
 import { Settings } from '@/components/svgs/Settings'
+import { CounterContext } from '@/contexts/CounterStatesProvider'
 import { GlobalContext } from '@/contexts/GlobalStatesProvider'
 
 import { formatSecondToMinuteString } from '@/helpers/number'
@@ -9,10 +10,15 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 export default function Home() {
   const { POMODORO_TYPES, currPomodoroType, setCurrPomodoroType } =
     useContext(GlobalContext)
-
-  const [inPause, setInPause] = useState(true)
-  const [totalTime, setTotalTime] = useState(5) // Temps total du minuteur en secondes
-  const [remainingTime, setRemainingTime] = useState(3) // Temps restant en secondes
+  const {
+    inPause,
+    setInPause,
+    setTotalTime,
+    totalTime,
+    decreaseRemainingTimeByOne,
+    restartTimer,
+    remainingTime,
+  } = useContext(CounterContext)
   const [intervalKey, setIntervalKey] = useState<NodeJS.Timer | null>()
 
   const handleStopTimer = useCallback(() => {
@@ -21,30 +27,28 @@ export default function Home() {
       setIntervalKey(null)
       setInPause(true)
     }
-  }, [intervalKey])
+  }, [intervalKey, setInPause])
 
   useEffect(() => {
     if (remainingTime === 0) handleStopTimer()
     else if (!inPause && !intervalKey) {
-      const interval = setInterval(
-        () => setRemainingTime((old) => old - 1),
-        1000
-      )
+      const interval = setInterval(() => decreaseRemainingTimeByOne(), 1000)
       setIntervalKey(interval)
     } else if (inPause) {
       handleStopTimer()
     }
-  }, [inPause, intervalKey, handleStopTimer, remainingTime])
+  }, [
+    inPause,
+    intervalKey,
+    handleStopTimer,
+    remainingTime,
+    decreaseRemainingTimeByOne,
+  ])
 
   const toggleAction = () => {
     if (remainingTime === 0) {
       restartTimer()
     } else setInPause((old) => !old)
-  }
-
-  const restartTimer = () => {
-    setRemainingTime(totalTime)
-    setInPause(false)
   }
 
   const getTextAction = () => {
