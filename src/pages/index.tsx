@@ -3,8 +3,10 @@ import PomodoroTypesChoice from '@/components/molecules/PomodoroTypesChoice'
 import { Settings } from '@/components/svgs/Settings'
 import { CounterContext } from '@/contexts/CounterStatesProvider'
 import { GlobalContext } from '@/contexts/GlobalStatesProvider'
+import { ModalContext } from '@/contexts/ModalProvider'
 
 import { formatSecondToMinuteString } from '@/helpers/number'
+import { ModalPomodoro } from '@/utils/ModalPomodoro'
 import { useCallback, useContext, useEffect, useState } from 'react'
 
 export default function Home() {
@@ -20,6 +22,8 @@ export default function Home() {
     remainingTime,
   } = useContext(CounterContext)
   const [intervalKey, setIntervalKey] = useState<NodeJS.Timer | null>()
+
+  const { modalIsOpen, openModal, closeModal } = useContext(ModalContext)
 
   const handleStopTimer = useCallback(() => {
     if (intervalKey) {
@@ -77,7 +81,7 @@ export default function Home() {
           textAction={getTextAction()}
           className="home__counter"
         />
-        <button className="home__settings">
+        <button className="home__settings" onClick={openModal}>
           <Settings />
         </button>
       </div>
