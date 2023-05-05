@@ -30,3 +30,7 @@ button:focus-visible,
 input:focus-visible {
   outline: 1px solid var(--clr-secondary-400);
 }
+
+button {
+  cursor: pointer;
+}
