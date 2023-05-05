@@ -1,35 +1,44 @@
 import React from 'react'
 import { InputRadio } from '../atoms/InputRadio'
 import { TypoChoiceItem } from '../atoms/TypoChoiceItem'
+import { Typos } from '@/utils/ModalPomodoro'
 
 interface Props {
-  handleChangeValue: (value: string) => void
+  currentValue: Typos
+  handleChangeValue: (value: Typos) => void
 }
 
-export const TypoChoice = ({ handleChangeValue }: Props) => {
+export const TypoChoice = ({ currentValue, handleChangeValue }: Props) => {
+  const handleChange = (value: string) => {
+    handleChangeValue(value as Typos)
+  }
+
   return (
     <div className="typo-choice">
       <InputRadio
-        label="test"
-        value="val1"
+        label="typo-a"
+        value="typo-a"
         name="tester"
-        handleChangeValue={handleChangeValue}
+        handleChangeValue={handleChange}
+        checked={currentValue === 'typo-a'}
       >
         <TypoChoiceItem className="font-a" />
       </InputRadio>
       <InputRadio
-        label="test2"
-        value="val2"
+        label="typo-b"
+        value="typo-b"
         name="tester"
-        handleChangeValue={handleChangeValue}
+        handleChangeValue={handleChange}
+        checked={currentValue === 'typo-b'}
       >
         <TypoChoiceItem className="font-b" />
       </InputRadio>
       <InputRadio
         label="test3"
-        value="val3"
-        name="tester"
-        handleChangeValue={handleChangeValue}
+        value="typo-c"
+        name="typo-c"
+        handleChangeValue={handleChange}
+        checked={currentValue === 'typo-c'}
       >
         <TypoChoiceItem className="font-c" />
       </InputRadio>

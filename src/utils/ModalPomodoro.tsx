@@ -5,18 +5,26 @@ import { TypoChoice } from '@/components/molecules/TypoChoice'
 import { Cross } from '@/components/svgs/Cross'
 import { POMODORO_TYPES } from '@/contexts/GlobalStatesProvider'
 import Modal from './Modal'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ModalContext } from '@/contexts/ModalProvider'
+
+export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
+export type Colors = 'color-a' | 'color-b' | 'color-c'
+
+const TYPOS: Typos[] = ['typo-a', 'typo-b', 'typo-c']
+export const COLORS: Colors[] = ['color-a', 'color-b', 'color-c']
 
 export const ModalPomodoro = () => {
   const { closeModal } = useContext(ModalContext)
+  const [typo, setTypo] = useState(TYPOS[0])
+  const [color, setColor] = useState(COLORS[0])
 
-  const handleTypoChange = (str: string) => {
-    console.log(str)
+  const handleTypoChange = (str: Typos) => {
+    setTypo(str)
   }
 
-  const handleColorChange = (str: string) => {
-    console.log(str)
+  const handleColorChange = (str: Colors) => {
+    setColor(str)
   }
 
   const submitSettings = () => {
@@ -43,11 +51,17 @@ export const ModalPomodoro = () => {
           </fieldset>
           <fieldset>
             <legend className="h4">title</legend>
-            <TypoChoice handleChangeValue={handleTypoChange} />
+            <TypoChoice
+              currentValue={typo}
+              handleChangeValue={handleTypoChange}
+            />
           </fieldset>
           <fieldset>
             <legend className="h4">color</legend>
-            <ColorChoice handleChangeValue={handleColorChange} />
+            <ColorChoice
+              currentValue={color}
+              handleChangeValue={handleColorChange}
+            />
           </fieldset>
 
           <Button text="Apply" handleClick={submitSettings} />
