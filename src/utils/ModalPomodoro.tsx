@@ -11,7 +11,7 @@ import { ModalContext } from '@/contexts/ModalProvider'
 export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
 export type Colors = 'color-a' | 'color-b' | 'color-c'
 
-const TYPOS: Typos[] = ['typo-a', 'typo-b', 'typo-c']
+export const TYPOS: Typos[] = ['typo-a', 'typo-b', 'typo-c']
 export const COLORS: Colors[] = ['color-a', 'color-b', 'color-c']
 
 export const ModalPomodoro = () => {
