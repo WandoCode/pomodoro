@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import ArrowUp from '../svgs/ArrowUp'
 import ArrowDown from '../svgs/ArrowDown'
 import { removeSpaces } from '@/helpers/strings'
+import { withStopPropagation } from '@/helpers/function'
 
 interface InputNumberCompProps {
   title: string
@@ -50,13 +51,19 @@ const InputNumberComp = ({
         />
 
         <div className="input-number__btns-wrapper">
-          <button className="input-number__btn-arrow" onClick={increaseByOne}>
+          <button
+            className="input-number__btn-arrow"
+            onClick={(e) => withStopPropagation(increaseByOne, e)}
+          >
             <span className="visually-hidden">Increase by 1</span>
 
             <ArrowUp className="input-number__arrow" />
           </button>
 
-          <button className="input-number__btn-arrow" onClick={decreaseByOne}>
+          <button
+            className="input-number__btn-arrow"
+            onClick={(e) => withStopPropagation(decreaseByOne, e)}
+          >
             <span className="visually-hidden">Decrease by 1</span>
 
             <ArrowDown className="input-number__arrow" />
