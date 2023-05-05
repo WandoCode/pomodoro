@@ -1,7 +1,6 @@
 interface Props {
   className?: string
   text: string
-  type: 'primary' | 'secondary'
   active: boolean
   handleClick: () => void
 }
@@ -9,21 +8,16 @@ interface Props {
 export const Button = ({
   className,
   text,
-  type,
   active = true,
   handleClick,
   ...props
 }: Props) => {
-  const btnClass = {
-    primary: `btn btn--primary ${active ? null : 'btn--primary-inactive'} `,
-    secondary: `btn btn--secondary ${
-      active ? null : 'btn--secondary-inactive'
-    } `,
-  }
-
   return (
     <button
-      className={btnClass[type] + (className ?? null)}
+      className={
+        `btn btn--primary ${active ? null : 'btn--primary-inactive'} ` +
+        (className ?? null)
+      }
       onClick={handleClick}
       {...props}
     >

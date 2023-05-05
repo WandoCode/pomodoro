@@ -1,10 +1,5 @@
 .input-radio {
   & label {
     cursor: pointer;
-    color: orangered;
-  }
-
-  & input[type='radio']:checked + label {
-    color: black;
   }
 }
