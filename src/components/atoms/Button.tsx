@@ -1,7 +1,9 @@
+import { withStopPropagation } from '@/helpers/function'
+
 interface Props {
   className?: string
   text: string
-  active: boolean
+  active?: boolean
   handleClick: () => void
 }
 
@@ -18,7 +20,7 @@ export const Button = ({
         `btn btn--primary ${active ? null : 'btn--primary-inactive'} ` +
         (className ?? null)
       }
-      onClick={handleClick}
+      onClick={(e) => withStopPropagation(handleClick, e)}
       {...props}
     >
       {text}
