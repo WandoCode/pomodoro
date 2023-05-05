@@ -53,3 +53,24 @@
 .font-c {
   font-family: $text-font-c;
 }
+
+.color-a {
+  background-color: var(--clr-primary-a-400);
+  &:hover {
+    background-color: var(--clr-primary-a-300);
+  }
+}
+
+.color-b {
+  background-color: var(--clr-primary-b-400);
+  &:hover {
+    background-color: var(--clr-primary-b-300);
+  }
+}
+
+.color-c {
+  background-color: var(--clr-primary-c-400);
+  &:hover {
+    background-color: var(--clr-primary-c-300);
+  }
+}

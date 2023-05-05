@@ -1,12 +1,15 @@
 import { Button } from '@/components/atoms/Button'
 import InputNumber from '@/components/atoms/InputNumber'
 import { InputRadio } from '@/components/atoms/InputRadio'
-import { TypoChoice } from '@/components/atoms/TypoChoice'
+import { ColorChoice } from '@/components/molecules/ColorChoice'
+import { TypoChoice } from '@/components/molecules/TypoChoice'
 import { Cross } from '@/components/svgs/Cross'
 import { POMODORO_TYPES } from '@/contexts/GlobalStatesProvider'
 
 export const ModalPomodoro = () => {
-  const handleChangeValue = (str: string) => {}
+  const handleChangeValue = (str: string) => {
+    console.log(str)
+  }
 
   return (
     <div className="modal-pomodoro">
@@ -27,30 +30,11 @@ export const ModalPomodoro = () => {
         </fieldset>
         <fieldset>
           <legend>title</legend>
-          <InputRadio
-            label="test"
-            value="val1"
-            name="tester"
-            handleChangeValue={() => handleChangeValue('test1')}
-          >
-            <TypoChoice className="font-a" />
-          </InputRadio>
-          <InputRadio
-            label="test2"
-            value="val2"
-            name="tester"
-            handleChangeValue={() => handleChangeValue('test2')}
-          >
-            <TypoChoice className="font-b" />
-          </InputRadio>
-          <InputRadio
-            label="test3"
-            value="val3"
-            name="tester"
-            handleChangeValue={() => handleChangeValue('test3')}
-          >
-            <TypoChoice className="font-c" />
-          </InputRadio>
+          <TypoChoice handleChangeValue={handleChangeValue} />
+        </fieldset>
+        <fieldset>
+          <legend>color</legend>
+          <ColorChoice handleChangeValue={handleChangeValue} />
         </fieldset>
       </form>
     </div>

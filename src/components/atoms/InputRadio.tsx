@@ -4,7 +4,7 @@ interface Props extends PropsWithChildren {
   label: string
   value: string
   name: string
-  handleChangeValue: () => void
+  handleChangeValue: (value: string) => void
 }
 export const InputRadio = ({
   label,
@@ -21,7 +21,7 @@ export const InputRadio = ({
         name={name}
         value={value}
         className="visually-hidden"
-        onChange={handleChangeValue}
+        onChange={() => handleChangeValue(value)}
       />
       <label htmlFor={label}>{children}</label>
     </div>

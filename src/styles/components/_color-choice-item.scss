@@ -1,0 +1,20 @@
+@use '../abstracts/' as *;
+
+.color-choice-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000px;
+  background-color: white;
+  height: rem(40);
+  width: rem(40);
+
+  & svg {
+    opacity: 0;
+    max-height: 16px;
+  }
+
+  .input-radio input[type='radio']:checked + label > & svg {
+    opacity: 1;
+  }
+}
