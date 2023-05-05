@@ -1,8 +1,12 @@
 import InputNumber from '@/components/atoms/InputNumber'
+import { InputRadio } from '@/components/atoms/InputRadio'
 import { Cross } from '@/components/svgs/Cross'
 import { POMODORO_TYPES } from '@/contexts/GlobalStatesProvider'
 
 export const ModalPomodoro = () => {
+  const handleChangeValue = (str: string) => {
+    console.log(str)
+  }
   return (
     <div className="modal-pomodoro">
       <div className="modal-pomodoro__sup">
