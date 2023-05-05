@@ -2,9 +2,10 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import ArrowUp from '../svgs/ArrowUp'
 import ArrowDown from '../svgs/ArrowDown'
+import { removeSpaces } from '@/helpers/strings'
 
 interface InputNumberCompProps {
-  label: string
+  title: string
   value: string
   increaseByOne: () => void
   decreaseByOne: () => void
@@ -14,7 +15,7 @@ interface InputNumberCompProps {
 }
 
 interface InputNumberProps {
-  label: string
+  title: string
   initialValue?: number
   changeValue: (num: number) => void
   className?: string
@@ -22,7 +23,7 @@ interface InputNumberProps {
 }
 
 const InputNumberComp = ({
-  label,
+  title,
   value,
   increaseByOne,
   decreaseByOne,
@@ -30,15 +31,19 @@ const InputNumberComp = ({
   className,
   ...props
 }: InputNumberCompProps) => {
+  const label = removeSpaces(title)
   return (
-    <div className={`input-number ${className}`} {...props}>
-      <label>{label} </label>
+    <div
+      className={className ? `input-number ${className}` : 'input-number'}
+      {...props}
+    >
+      <label htmlFor={label}>{title} </label>
 
       <div className="input-number__input-wrapper">
         <input
           type="number"
-          name="time"
-          id="time"
+          name={label}
+          id={label}
           min={0}
           value={value}
           onChange={(e) => handleChange(e.target.value)}
@@ -63,7 +68,7 @@ const InputNumberComp = ({
 }
 
 const InputNumber = ({
-  label,
+  title,
   changeValue,
   initialValue = 0,
   ...props
@@ -108,7 +113,7 @@ const InputNumber = ({
 
   return (
     <InputNumberComp
-      label={label}
+      title={title}
       value={currValue}
       increaseByOne={handleIncreaseByOne}
       decreaseByOne={handleDecreaseByOne}
