@@ -1,4 +1,11 @@
-import { PropsWithChildren, useState, createContext } from 'react'
+import {
+  PropsWithChildren,
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+} from 'react'
+import { GlobalContext } from './GlobalStatesProvider'
 
 export interface CounterState {
   inPause: boolean
@@ -12,8 +19,8 @@ export interface CounterState {
 
 export const initialCounterContext: CounterState = {
   inPause: true,
-  totalTime: 600,
-  remainingTime: 600,
+  totalTime: 0,
+  remainingTime: 0,
   setInPause: () => {},
   setTotalTime: () => {},
   decreaseRemainingTimeByOne: () => {},
@@ -28,6 +35,13 @@ const CounterStatesProvider = ({ children }: PropsWithChildren) => {
   const [remainingTime, setRemainingTime] = useState(
     initialCounterContext.remainingTime
   )
+  const { pomodoroDefaultTimes, currPomodoroType } = useContext(GlobalContext)
+
+  useEffect(() => {
+    setTotalTime(pomodoroDefaultTimes[currPomodoroType])
+    setRemainingTime(pomodoroDefaultTimes[currPomodoroType])
+    setInPause(true)
+  }, [pomodoroDefaultTimes, currPomodoroType])
 
   const decreaseRemainingTimeByOne = () => {
     setRemainingTime((old) => old - 1)
@@ -56,3 +70,5 @@ const CounterStatesProvider = ({ children }: PropsWithChildren) => {
 }
 
 export default CounterStatesProvider
+
+// TODO: valider la modal en pressant sur ENTRE

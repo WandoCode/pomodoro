@@ -25,7 +25,7 @@ interface GlobalState {
   currentColor: Colors
   pomodoroDefaultTimes: PomodoroDefaultTimes
   setCurrPomodoroType: (newType: PomodoroTypes) => void
-  setPomodoroDefaultTimes: (newDefaults: PomodoroDefaultTimes) => void
+  updateDefaultTimes: (newDefaults: PomodoroDefaultTimes) => void
   changeColor: (newValue: string) => void
   changeTypo: (newValue: string) => void
 }
@@ -42,7 +42,7 @@ export const initialGlobalState: GlobalState = {
     'short break': 90,
     'long break': 200,
   },
-  setPomodoroDefaultTimes: (newDefaults: PomodoroDefaultTimes) => {},
+  updateDefaultTimes: (newDefaults: PomodoroDefaultTimes) => {},
   setCurrPomodoroType: (newType: PomodoroTypes) => {},
   changeColor: (newValue: string) => {},
   changeTypo: (newValue: string) => {},
@@ -54,7 +54,6 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
   const [pomodoroDefaultTimes, setPomodoroDefaultTimes] = useState(
     initialGlobalState.pomodoroDefaultTimes
   )
-
   const [currPomodoroType, setCurrPomodoroType] = useState(
     initialGlobalState.currPomodoroType
   )
@@ -70,6 +69,15 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
     if (TYPOS.includes(newTypo as Typos)) setCurrentTypo(newTypo as Typos)
   }
 
+  const updateDefaultTimes = (newDefault: PomodoroDefaultTimes) => {
+    for (const type in newDefault) {
+      const time = newDefault[type as PomodoroTypes]
+      if (time <= 0) return
+    }
+
+    setPomodoroDefaultTimes(newDefault)
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -81,7 +89,7 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
         currentColor,
         currentTypo,
         pomodoroDefaultTimes,
-        setPomodoroDefaultTimes,
+        updateDefaultTimes,
         changeColor,
         changeTypo,
       }}

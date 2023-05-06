@@ -6,7 +6,6 @@ import { GlobalContext } from '@/contexts/GlobalStatesProvider'
 import { ModalContext } from '@/contexts/ModalProvider'
 
 import { formatSecondToMinuteString } from '@/helpers/number'
-import { ModalPomodoro } from '@/utils/ModalPomodoro'
 import { useCallback, useContext, useEffect, useState } from 'react'
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
   const {
     inPause,
     setInPause,
-    setTotalTime,
     totalTime,
     decreaseRemainingTimeByOne,
     restartTimer,
@@ -23,7 +21,7 @@ export default function Home() {
   } = useContext(CounterContext)
   const [intervalKey, setIntervalKey] = useState<NodeJS.Timer | null>()
 
-  const { modalIsOpen, openModal, closeModal } = useContext(ModalContext)
+  const { openModal } = useContext(ModalContext)
 
   const handleStopTimer = useCallback(() => {
     if (intervalKey) {

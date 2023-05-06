@@ -38,7 +38,7 @@ const InputNumberComp = ({
       className={className ? `input-number ${className}` : 'input-number'}
       {...props}
     >
-      <label htmlFor={label} className="fc-neutral-700 text-sm">
+      <label htmlFor={label} className="fc-neutral-700 text-small">
         {title}
       </label>
 
@@ -85,11 +85,14 @@ const InputNumber = ({
   const [currValue, setCurrValue] = useState(initialValue.toString())
 
   useEffect(() => {
+    if (initialValue.toString() === currValue) return
+
     const numericalValue = parseInt(currValue)
 
     if (!numericalValue) return
+
     changeValue(numericalValue)
-  }, [currValue, changeValue])
+  }, [currValue, changeValue, initialValue])
 
   const handleIncreaseByOne = () => {
     const numericValue = parseInt(currValue, 10)
@@ -97,7 +100,6 @@ const InputNumber = ({
     if (isNaN(numericValue) || numericValue < 0) return
 
     const newValue = numericValue + 1
-    console.log(newValue.toString())
 
     setCurrValue(newValue.toString())
   }

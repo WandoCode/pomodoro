@@ -4,9 +4,14 @@ import { ColorChoice } from '@/components/molecules/ColorChoice'
 import { TypoChoice } from '@/components/molecules/TypoChoice'
 import { Cross } from '@/components/svgs/Cross'
 import Modal from './Modal'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ModalContext } from '@/contexts/ModalProvider'
-import { Colors, GlobalContext, Typos } from '../contexts/GlobalStatesProvider'
+import {
+  Colors,
+  GlobalContext,
+  PomodoroTypes,
+  Typos,
+} from '../contexts/GlobalStatesProvider'
 
 export const ModalPomodoro = () => {
   const { closeModal } = useContext(ModalContext)
@@ -17,10 +22,14 @@ export const ModalPomodoro = () => {
     currentColor,
     currentTypo,
     pomodoroDefaultTimes,
-    setPomodoroDefaultTimes,
+    updateDefaultTimes,
     changeColor,
     changeTypo,
   } = useContext(GlobalContext)
+
+  const [currentDefaultTimes, setcurrentDefaultTimes] =
+    useState(pomodoroDefaultTimes)
+
   const handleTypoChange = (str: Typos) => {
     changeTypo(str)
   }
@@ -30,7 +39,18 @@ export const ModalPomodoro = () => {
   }
 
   const submitSettings = () => {
+    updateDefaultTimes(currentDefaultTimes)
     closeModal()
+  }
+
+  const handleChangeDefaultTimes = (
+    newValue: number,
+    pomodoro_type: PomodoroTypes
+  ) => {
+    const cpyCurrentDefaultTimes = { ...currentDefaultTimes }
+    cpyCurrentDefaultTimes[pomodoro_type] = newValue
+
+    setcurrentDefaultTimes(cpyCurrentDefaultTimes)
   }
 
   return (
@@ -51,8 +71,10 @@ export const ModalPomodoro = () => {
                   <InputNumber
                     key={type}
                     title={type}
-                    changeValue={() => {}}
-                    initialValue={pomodoroDefaultTimes[type]}
+                    changeValue={(newValue) =>
+                      handleChangeDefaultTimes(newValue, type)
+                    }
+                    initialValue={currentDefaultTimes[type]}
                   />
                 )
               })}
