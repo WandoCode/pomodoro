@@ -25,7 +25,11 @@ function Modal({ closeModal, children }: Props) {
     const handleCloseModal = (e: MouseEvent) => {
       const target = e.target as HTMLElement
 
-      if (target.classList.contains('modal')) closeModal()
+      if (
+        target.classList.contains('modal') ||
+        target.classList.contains('modal__content')
+      )
+        closeModal()
     }
 
     document.body.addEventListener('mousedown', handleCloseModal)
