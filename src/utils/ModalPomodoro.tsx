@@ -33,38 +33,44 @@ export const ModalPomodoro = () => {
 
   return (
     <Modal closeModal={closeModal}>
-      <div className="modal-pomodoro">
+      <div className="modal-pomodoro ">
         <div className="modal-pomodoro__sup">
-          <h1 className="h2">Settings</h1>
+          <h1 className="h2 fc-secondary-800">Settings</h1>
           <button className="modal-pomodoro__close-btn" onClick={closeModal}>
             <Cross />
           </button>
         </div>
         <form className="modal-pomodoro__inf">
           <fieldset>
-            <legend className="h4">Time (minutes)</legend>
-            {POMODORO_TYPES.map((type) => {
-              return (
-                <InputNumber key={type} title={type} changeValue={() => {}} />
-              )
-            })}
+            <legend className="h4 fc-secondary-800">Time (minutes)</legend>
+            <div className="modal-pomodoro__input-number-wrapper">
+              {POMODORO_TYPES.map((type) => {
+                return (
+                  <InputNumber key={type} title={type} changeValue={() => {}} />
+                )
+              })}
+            </div>
           </fieldset>
           <fieldset>
-            <legend className="h4">title</legend>
+            <legend className="h4 fc-secondary-800">title</legend>
             <TypoChoice
               currentValue={typo}
               handleChangeValue={handleTypoChange}
             />
           </fieldset>
           <fieldset>
-            <legend className="h4">color</legend>
+            <legend className="h4 fc-secondary-800">color</legend>
             <ColorChoice
               currentValue={color}
               handleChangeValue={handleColorChange}
             />
           </fieldset>
 
-          <Button text="Apply" handleClick={submitSettings} />
+          <Button
+            text="Apply"
+            handleClick={submitSettings}
+            className="modal-pomodoro__submit fc-neutral-100"
+          />
         </form>
       </div>
     </Modal>

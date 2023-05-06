@@ -1,5 +1,82 @@
 @use '../abstracts/' as *;
 
 .modal-pomodoro {
+  --padding: 24px;
+  --btn-submit-height: 53px;
+
   background-color: var(--clr-neutral-100);
+  margin-inline: rem(24);
+  margin-top: rem(46);
+
+  border-radius: 15px;
+
+  &__sup {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--clr-neutral-500);
+    padding-inline: var(--padding);
+    padding-block: var(--padding) calc(var(--padding) + 4px);
+  }
+
+  &__close-btn {
+    border: none;
+    background-color: transparent;
+    height: min-content;
+  }
+
+  &__inf {
+    display: grid;
+
+    padding: var(--padding) var(--padding) 0 var(--padding);
+  }
+
+  & .typo-choice,
+  & .color-choice {
+    display: flex;
+    gap: 1rem;
+
+    width: fit-content;
+
+    margin-inline: auto;
+  }
+
+  &__submit {
+    width: rem(140);
+    height: var(--btn-submit-height);
+    margin-inline: auto;
+    transform: translateY(calc(var(--btn-submit-height) / 2));
+  }
+
+  & fieldset {
+    border: none;
+    padding: 0;
+    display: grid;
+
+    & > legend {
+      text-align: center;
+      margin-bottom: rem(18);
+      float: left;
+    }
+
+    &:first-child {
+      margin-bottom: var(--padding);
+    }
+
+    &:nth-child(2) {
+      padding-block: var(--padding);
+      border-top: 1px solid var(--clr-neutral-500);
+    }
+
+    &:nth-child(3) {
+      padding-block: 1rem 0.6rem;
+      border-top: 1px solid var(--clr-neutral-500);
+    }
+  }
+
+  &__input-number-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+  }
 }

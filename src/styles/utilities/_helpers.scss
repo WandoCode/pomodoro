@@ -10,8 +10,10 @@
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
+  --margin-sm: 1.5rem;
   max-width: $max-width-sm; /* 1 */
-  margin-inline: rem(24);
+  margin-inline: var(--margin-sm);
+  width: calc(100% - 2 * var(--margin-sm));
 }
 
 /**

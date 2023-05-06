@@ -38,7 +38,9 @@ const InputNumberComp = ({
       className={className ? `input-number ${className}` : 'input-number'}
       {...props}
     >
-      <label htmlFor={label}>{title} </label>
+      <label htmlFor={label} className="fc-neutral-700">
+        {title}
+      </label>
 
       <div className="input-number__input-wrapper">
         <input

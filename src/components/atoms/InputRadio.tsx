@@ -7,6 +7,7 @@ interface Props extends PropsWithChildren {
   checked: boolean
   handleChangeValue: (value: string) => void
 }
+
 export const InputRadio = ({
   label,
   value,

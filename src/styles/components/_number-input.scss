@@ -2,7 +2,9 @@
 
 .input-number {
   $padding-inline: rem(16);
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &__input-wrapper {
     position: relative;
