@@ -3,28 +3,30 @@ import InputNumber from '@/components/atoms/InputNumber'
 import { ColorChoice } from '@/components/molecules/ColorChoice'
 import { TypoChoice } from '@/components/molecules/TypoChoice'
 import { Cross } from '@/components/svgs/Cross'
-import { POMODORO_TYPES } from '@/contexts/GlobalStatesProvider'
 import Modal from './Modal'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { ModalContext } from '@/contexts/ModalProvider'
-
-export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
-export type Colors = 'color-a' | 'color-b' | 'color-c'
-
-export const TYPOS: Typos[] = ['typo-a', 'typo-b', 'typo-c']
-export const COLORS: Colors[] = ['color-a', 'color-b', 'color-c']
+import { Colors, GlobalContext, Typos } from '../contexts/GlobalStatesProvider'
 
 export const ModalPomodoro = () => {
   const { closeModal } = useContext(ModalContext)
-  const [typo, setTypo] = useState(TYPOS[0])
-  const [color, setColor] = useState(COLORS[0])
-
+  const {
+    POMODORO_TYPES,
+    TYPOS,
+    COLORS,
+    currentColor,
+    currentTypo,
+    pomodoroDefaultTimes,
+    setPomodoroDefaultTimes,
+    changeColor,
+    changeTypo,
+  } = useContext(GlobalContext)
   const handleTypoChange = (str: Typos) => {
-    setTypo(str)
+    changeTypo(str)
   }
 
   const handleColorChange = (str: Colors) => {
-    setColor(str)
+    changeColor(str)
   }
 
   const submitSettings = () => {
@@ -46,7 +48,12 @@ export const ModalPomodoro = () => {
             <div className="modal-pomodoro__input-number-wrapper">
               {POMODORO_TYPES.map((type) => {
                 return (
-                  <InputNumber key={type} title={type} changeValue={() => {}} />
+                  <InputNumber
+                    key={type}
+                    title={type}
+                    changeValue={() => {}}
+                    initialValue={pomodoroDefaultTimes[type]}
+                  />
                 )
               })}
             </div>
@@ -54,14 +61,16 @@ export const ModalPomodoro = () => {
           <fieldset>
             <legend className="h4 fc-secondary-800">title</legend>
             <TypoChoice
-              currentValue={typo}
+              currentValue={currentTypo}
+              choices={TYPOS}
               handleChangeValue={handleTypoChange}
             />
           </fieldset>
           <fieldset>
             <legend className="h4 fc-secondary-800">color</legend>
             <ColorChoice
-              currentValue={color}
+              currentValue={currentColor}
+              choices={COLORS}
               handleChangeValue={handleColorChange}
             />
           </fieldset>

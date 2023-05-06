@@ -1,30 +1,35 @@
 import React from 'react'
 import { InputRadio } from '../atoms/InputRadio'
 import { ColorChoiceItem } from '../atoms/ColorChoiceItem'
-import { COLORS, Colors } from '@/utils/ModalPomodoro'
+import { Colors } from '@/contexts/GlobalStatesProvider'
 
 interface Props {
   currentValue: Colors
+  choices: Colors[]
   handleChangeValue: (value: Colors) => void
 }
 
-export const ColorChoice = ({ currentValue, handleChangeValue }: Props) => {
+export const ColorChoice = ({
+  currentValue,
+  choices,
+  handleChangeValue,
+}: Props) => {
   const handleChange = (value: string) => {
     handleChangeValue(value as Colors)
   }
 
   return (
     <div className="color-choice">
-      {COLORS.map((color: Colors, i: number) => (
+      {choices.map((choice) => (
         <InputRadio
-          key={color}
-          label={color}
-          value={color}
+          key={choice}
+          label={choice}
+          value={choice}
           name="colors"
           handleChangeValue={handleChange}
-          checked={currentValue === color}
+          checked={currentValue === choice}
         >
-          <ColorChoiceItem className={color} />
+          <ColorChoiceItem className={choice} />
         </InputRadio>
       ))}
     </div>
