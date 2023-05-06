@@ -74,7 +74,11 @@ export default function Home() {
       <div className="home__down">
         <Counter
           timePercentage={(remainingTime * 100) / totalTime}
-          timeLeft={formatSecondToMinuteString(remainingTime)}
+          timeLeft={
+            remainingTime === 0
+              ? formatSecondToMinuteString(totalTime)
+              : formatSecondToMinuteString(remainingTime)
+          }
           onToggleAction={toggleAction}
           textAction={getTextAction()}
           className="home__counter"
