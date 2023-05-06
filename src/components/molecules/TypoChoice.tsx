@@ -24,7 +24,7 @@ export const TypoChoice = ({ currentValue, handleChangeValue }: Props) => {
           handleChangeValue={handleChange}
           checked={currentValue === typo}
         >
-          <TypoChoiceItem className="font-a" />
+          <TypoChoiceItem className={`font-${typo.at(-1)}`} />
         </InputRadio>
       ))}
     </div>

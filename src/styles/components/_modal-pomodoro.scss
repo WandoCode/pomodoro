@@ -4,11 +4,19 @@
   --padding: 24px;
   --btn-submit-height: 53px;
 
+  @include breakpoint(medium) {
+    --padding: 40px;
+  }
+
   background-color: var(--clr-neutral-100);
   margin-inline: rem(24);
-  margin-top: rem(46);
 
   border-radius: 15px;
+
+  @include breakpoint(medium) {
+    max-width: rem(540);
+    margin-inline: auto;
+  }
 
   &__sup {
     display: flex;
@@ -17,6 +25,10 @@
     border-bottom: 1px solid var(--clr-neutral-500);
     padding-inline: var(--padding);
     padding-block: var(--padding) calc(var(--padding) + 4px);
+
+    @include breakpoint(medium) {
+      padding-block: rem(34);
+    }
   }
 
   &__close-btn {
@@ -39,6 +51,10 @@
     width: fit-content;
 
     margin-inline: auto;
+
+    @include breakpoint(medium) {
+      margin-inline: 0;
+    }
   }
 
   &__submit {
@@ -49,23 +65,43 @@
   }
 
   & fieldset {
+    display: flex;
+    flex-direction: column;
+
     border: none;
     padding: 0;
-    display: grid;
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     & > legend {
       text-align: center;
       margin-bottom: rem(18);
       float: left;
+
+      @include breakpoint(medium) {
+        align-self: flex-start;
+      }
     }
 
     &:first-child {
       margin-bottom: var(--padding);
+
+      @include breakpoint(medium) {
+        flex-direction: column;
+        margin-bottom: rem(24);
+      }
     }
 
     &:nth-child(2) {
       padding-block: var(--padding);
       border-top: 1px solid var(--clr-neutral-500);
+      @include breakpoint(medium) {
+        padding-block: rem(24);
+      }
     }
 
     &:nth-child(3) {
@@ -78,5 +114,11 @@
     display: flex;
     flex-direction: column;
     gap: rem(8);
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 }

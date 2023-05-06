@@ -1,6 +1,9 @@
 .modal {
   position: fixed;
   inset: 0;
+
+  display: grid;
+  align-items: center;
   background-color: var(--clr-secondary-900);
 
   z-index: 1;
