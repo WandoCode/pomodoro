@@ -63,7 +63,7 @@
     }
 
     & path {
-      stroke: var(--clr-primary-a-400);
+      stroke: var(--clr-primary);
       stroke-linecap: round;
 
       @include breakpoint(medium) {
@@ -73,7 +73,7 @@
   }
 
   &__time {
-    width: 2.375em;
+    min-width: 2.375em;
     text-align: left;
   }
 

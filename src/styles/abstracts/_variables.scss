@@ -5,3 +5,9 @@ $text-font-c: 'Space Mono', sans-serif;
 
 /// Container's maximum width
 $max-width-sm: 410px;
+
+:root {
+  --main-typo: 'Kumbh Sans', sans-serif;
+  --clr-primary: var(--clr-primary-a-400);
+  --clr-primary-light: var(--clr-primary-a-300);
+}

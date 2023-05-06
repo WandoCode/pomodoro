@@ -5,7 +5,7 @@
 
 body {
   color: var(--clr-neutral-400);
-  font-family: $text-font-a;
+  font-family: var(--main-typo);
   font-size: var(--fs-300);
   font-weight: bold;
 }

@@ -1,4 +1,5 @@
-import { PropsWithChildren, useState, createContext } from 'react'
+import { getFontFamily } from '@/helpers/strings'
+import { PropsWithChildren, useState, createContext, useEffect } from 'react'
 
 export type PomodoroTypes = 'pomodoro' | 'short break' | 'long break'
 export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
@@ -60,6 +61,24 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
 
   const [currentColor, setCurrentColor] = useState(initialGlobalState.COLORS[0])
   const [currentTypo, setCurrentTypo] = useState(initialGlobalState.TYPOS[0])
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--main-typo',
+      getFontFamily(currentTypo)
+    )
+  }, [currentTypo])
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--clr-primary',
+      `var(--clr-primary-${currentColor.at(-1)}-400)`
+    )
+    document.documentElement.style.setProperty(
+      '--clr-primary-light',
+      `var(--clr-primary-${currentColor.at(-1)}-300)`
+    )
+  }, [currentColor])
 
   const changeColor = (newColor: string) => {
     if (COLORS.includes(newColor as Colors)) setCurrentColor(newColor as Colors)

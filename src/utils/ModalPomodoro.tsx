@@ -4,7 +4,7 @@ import { ColorChoice } from '@/components/molecules/ColorChoice'
 import { TypoChoice } from '@/components/molecules/TypoChoice'
 import { Cross } from '@/components/svgs/Cross'
 import Modal from './Modal'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ModalContext } from '@/contexts/ModalProvider'
 import {
   Colors,
