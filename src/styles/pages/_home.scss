@@ -48,5 +48,24 @@
   &__settings {
     background-color: transparent;
     border: none;
+
+    & path {
+      transition: opacity 150ms;
+    }
+    &:hover {
+      & path {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+@keyframes rotate-element {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
