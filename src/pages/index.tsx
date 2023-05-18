@@ -82,6 +82,7 @@ export default function Home() {
           onToggleAction={toggleAction}
           textAction={getTextAction()}
           className="home__counter"
+          active={!inPause}
         />
         <button className="home__settings" onClick={openModal}>
           <Settings />

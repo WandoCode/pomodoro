@@ -4,53 +4,64 @@
   $border-sm: 1rem;
   $border-md: rem(22);
 
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  max-height: 300px;
-  max-width: 300px;
-
-  width: 100%;
-
-  aspect-ratio: 1;
-
-  border: solid $border-sm transparent;
-  border-radius: 100%;
-  background-clip: padding-box;
-  background-color: var(--clr-secondary-800);
-  box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
-
-  @include breakpoint(medium) {
-    max-height: 410px;
-    max-width: 410px;
-    min-height: 340px;
-    min-width: 340px;
-
-    width: 51.25dvh;
-    border-width: $border-md;
+  transition: transform 100ms ease-in-out;
+  &:hover {
+    transform: translateY(-2px) scale(1.005);
   }
 
-  @include breakpoint(large) {
-    gap: 5%;
-  }
+  &__body {
+    position: relative;
 
-  &:before {
-    content: '';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    position: absolute;
-    inset: -$border-sm;
+    max-height: 300px;
+    max-width: 300px;
 
-    z-index: -1;
+    width: 100%;
 
+    aspect-ratio: 1;
+
+    border: solid $border-sm transparent;
     border-radius: 100%;
-    background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+    background-clip: padding-box;
+    background-color: var(--clr-secondary-800);
+    box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
 
     @include breakpoint(medium) {
-      inset: -$border-md;
+      max-height: 410px;
+      max-width: 410px;
+      min-height: 340px;
+      min-width: 340px;
+
+      width: 51.25dvh;
+      border-width: $border-md;
+    }
+
+    @include breakpoint(large) {
+      gap: 5%;
+    }
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      inset: -$border-sm;
+
+      z-index: -1;
+
+      border-radius: 100%;
+      background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+
+      @include breakpoint(medium) {
+        inset: -$border-md;
+      }
+    }
+
+    &--active:before {
+      animation: rotate-element 7000ms linear infinite forwards;
     }
   }
 
@@ -79,5 +90,15 @@
 
   &__action {
     margin-right: -10px;
+  }
+}
+
+@keyframes rotate-element {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

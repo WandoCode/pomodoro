@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Circle } from '../svgs/Circle'
 
 interface Props {
@@ -6,6 +7,7 @@ interface Props {
   textAction: string
   onToggleAction: () => void
   className?: string
+  active?: boolean
 }
 const Counter = ({
   timeLeft,
@@ -13,19 +15,28 @@ const Counter = ({
   textAction,
   className,
   onToggleAction,
+  active = false,
 }: Props) => {
+  const counterClassName = useMemo(() => {
+    const base = 'counter__body'
+    let finalClass = base
+    if (className) finalClass = finalClass + ' ' + className
+    if (active) finalClass = finalClass + ' ' + `${base}--active`
+
+    return finalClass
+  }, [active, className])
+
   return (
-    <button
-      className={className ? `counter ${className}` : 'counter'}
-      onClick={onToggleAction}
-    >
-      <Circle
-        className="counter__circle"
-        timePercentage={timePercentage === 0 ? 100 : timePercentage}
-      />
-      <p className="counter__time h1 fc-neutral-400">{timeLeft}</p>
-      <p className="counter__action h3 fc-neutral-400">{textAction}</p>
-    </button>
+    <div className="counter">
+      <button className={counterClassName} onClick={onToggleAction}>
+        <Circle
+          className="counter__circle"
+          timePercentage={timePercentage === 0 ? 100 : timePercentage}
+        />
+        <p className="counter__time h1 fc-neutral-400">{timeLeft}</p>
+        <p className="counter__action h3 fc-neutral-400">{textAction}</p>
+      </button>
+    </div>
   )
 }
 
