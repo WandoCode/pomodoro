@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { KeyboardEvent, PropsWithChildren } from 'react'
 
 interface Props extends PropsWithChildren {
   label: string
@@ -16,6 +16,10 @@ export const InputRadio = ({
   handleChangeValue,
   children,
 }: Props) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') handleChangeValue(value)
+  }
+
   return (
     <div className="input-radio">
       <input
@@ -26,8 +30,11 @@ export const InputRadio = ({
         className="visually-hidden"
         checked={checked}
         onChange={() => handleChangeValue(value)}
+        tabIndex={-1}
       />
-      <label htmlFor={label}>{children}</label>
+      <label htmlFor={label} tabIndex={0} onKeyDown={handleKeyDown}>
+        {children}
+      </label>
     </div>
   )
 }

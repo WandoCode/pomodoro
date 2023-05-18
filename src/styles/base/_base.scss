@@ -27,7 +27,8 @@ body {
 }
 
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+div:focus-visible {
   outline: 3px solid var(--clr-secondary-400);
 }
 
