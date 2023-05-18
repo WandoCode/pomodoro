@@ -32,15 +32,19 @@ export const CounterContext = createContext(initialCounterContext)
 const CounterStatesProvider = ({ children }: PropsWithChildren) => {
   const [inPause, setInPause] = useState(initialCounterContext.inPause)
   const [totalTime, setTotalTime] = useState(initialCounterContext.totalTime)
+  const { pomodoroDefaultTimes, currPomodoroType } = useContext(GlobalContext)
   const [remainingTime, setRemainingTime] = useState(
     initialCounterContext.remainingTime
   )
-  const { pomodoroDefaultTimes, currPomodoroType } = useContext(GlobalContext)
 
   useEffect(() => {
-    setTotalTime(pomodoroDefaultTimes[currPomodoroType])
-    setRemainingTime(pomodoroDefaultTimes[currPomodoroType])
-    setInPause(true)
+    const startNewTimer = () => {
+      setTotalTime(pomodoroDefaultTimes[currPomodoroType])
+      setRemainingTime(pomodoroDefaultTimes[currPomodoroType])
+      setInPause(true)
+    }
+
+    startNewTimer()
   }, [pomodoroDefaultTimes, currPomodoroType])
 
   const decreaseRemainingTimeByOne = () => {

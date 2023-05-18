@@ -22,7 +22,6 @@ const PomodoroTypesChoice = ({
         <li key={choice}>
           <Button
             text={choice}
-            type="primary"
             active={choice === value}
             handleClick={() => {
               changeValue(choice)

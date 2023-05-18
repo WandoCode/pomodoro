@@ -2,7 +2,6 @@ import { getFontFamily } from '@/helpers/strings'
 import { PropsWithChildren, useState, createContext, useEffect } from 'react'
 
 export type PomodoroTypes = 'pomodoro' | 'short break' | 'long break'
-export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
 export type Colors = 'color-a' | 'color-b' | 'color-c'
 
 export const POMODORO_TYPES: PomodoroTypes[] = [
@@ -10,6 +9,7 @@ export const POMODORO_TYPES: PomodoroTypes[] = [
   'short break',
   'long break',
 ]
+export type Typos = 'typo-a' | 'typo-b' | 'typo-c'
 export const TYPOS: Typos[] = ['typo-a', 'typo-b', 'typo-c']
 export const COLORS: Colors[] = ['color-a', 'color-b', 'color-c']
 
@@ -63,21 +63,30 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
   const [currentTypo, setCurrentTypo] = useState(initialGlobalState.TYPOS[0])
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--main-typo',
-      getFontFamily(currentTypo)
-    )
+    const changeTypoInStyle = () => {
+      document.documentElement.style.setProperty(
+        '--main-typo',
+        getFontFamily(currentTypo)
+      )
+
+      changeTypoInStyle()
+    }
   }, [currentTypo])
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--clr-primary',
-      `var(--clr-primary-${currentColor.at(-1)}-400)`
-    )
-    document.documentElement.style.setProperty(
-      '--clr-primary-light',
-      `var(--clr-primary-${currentColor.at(-1)}-300)`
-    )
+    const changeColorInStyle = () => {
+      document.documentElement.style.setProperty(
+        '--clr-primary',
+        `var(--clr-primary-${currentColor.at(-1)}-400)`
+      )
+
+      document.documentElement.style.setProperty(
+        '--clr-primary-light',
+        `var(--clr-primary-${currentColor.at(-1)}-300)`
+      )
+    }
+
+    changeColorInStyle()
   }, [currentColor])
 
   const changeColor = (newColor: string) => {
