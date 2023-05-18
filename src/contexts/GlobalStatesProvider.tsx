@@ -68,9 +68,9 @@ const GlobalStatesProvider = ({ children }: PropsWithChildren) => {
         '--main-typo',
         getFontFamily(currentTypo)
       )
-
-      changeTypoInStyle()
     }
+
+    changeTypoInStyle()
   }, [currentTypo])
 
   useEffect(() => {
