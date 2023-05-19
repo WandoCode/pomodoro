@@ -12,6 +12,8 @@
   width: 100%;
 
   transition: transform 100ms ease-in-out;
+  background-color: white;
+  overflow: hidden;
 
   @include on-hover {
     &:hover {
@@ -43,7 +45,6 @@
     background-clip: padding-box;
     background-color: var(--clr-secondary-800);
     box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
-
     @include breakpoint(medium) {
       max-height: 410px;
       max-width: 410px;
