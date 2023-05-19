@@ -9,6 +9,8 @@
 
   isolation: isolate;
 
+  overflow: hidden;
+
   &__sup {
     display: grid;
     grid-template-rows: auto fit-content;
