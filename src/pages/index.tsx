@@ -6,6 +6,7 @@ import { GlobalContext } from '@/contexts/GlobalStatesProvider'
 import { ModalContext } from '@/contexts/ModalProvider'
 
 import { formatSecondToMinuteString } from '@/helpers/number'
+import Head from 'next/head'
 import { useCallback, useContext, useEffect, useState } from 'react'
 
 export default function Home() {
@@ -62,6 +63,9 @@ export default function Home() {
 
   return (
     <main className="home">
+      <Head>
+        <title>Pomodoro</title>
+      </Head>
       <div className="home__sup">
         <h1 className="home__title title">pomodoro</h1>
         <PomodoroTypesChoice
