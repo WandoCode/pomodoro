@@ -33,8 +33,8 @@ const Counter = ({
           className="counter__circle"
           timePercentage={timePercentage === 0 ? 100 : timePercentage}
         />
-        <p className="counter__time h1 fc-neutral-400">{timeLeft}</p>
-        <p className="counter__action h3 fc-neutral-400">{textAction}</p>
+        <span className="counter__time h1 fc-neutral-400">{timeLeft}</span>
+        <span className="counter__action h3 fc-neutral-400">{textAction}</span>
       </button>
     </div>
   )

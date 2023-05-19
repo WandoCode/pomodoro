@@ -85,6 +85,7 @@ export default function Home() {
           active={!inPause}
         />
         <button className="home__settings" onClick={openModal}>
+          <span className="visually-hidden">Settings</span>
           <Settings />
         </button>
       </div>
