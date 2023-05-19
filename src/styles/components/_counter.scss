@@ -12,8 +12,6 @@
   width: 100%;
 
   transition: transform 100ms ease-in-out;
-  background-color: white;
-  overflow: hidden;
 
   @include on-hover {
     &:hover {
@@ -35,6 +33,7 @@
 
     max-height: 300px;
     max-width: 300px;
+    overflow: hidden;
 
     width: 100%;
 

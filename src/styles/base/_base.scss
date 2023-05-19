@@ -35,3 +35,8 @@ div:focus-visible {
 button {
   cursor: pointer;
 }
+
+button,
+div {
+  -webkit-tap-highlight-color: transparent;
+}
