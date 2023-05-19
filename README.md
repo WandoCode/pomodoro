@@ -1,8 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pomodor App
+
+This repo contains all the code for a simple Pomodoro application.
+
+This app can be discovered live at [this address](https://wandocode.github.io/pomodoro/)
 
 ## Getting Started
 
-First, run the development server:
+Clone and install nodes modules.
+Then,
 
 ```bash
 npm run dev
@@ -14,25 +19,25 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Main features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Different themes (colors - typos)
+- React context API for global states
+- Modal management with Context API
+- Lightweighted (minimal dependencies)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## About this project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project was an easy educational project where I focused on writing a clear, maintainable and reusable code.
 
-## Learn More
+The project idea and design come from [Frontend Mentor](https://www.frontendmentor.io/profile/Wandole).
 
-To learn more about Next.js, take a look at the following resources:
+The app is fully responsive and accessible with keyboard.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Themes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The theme switch (color/typo) has been handled with CSS variable updated via Javascript.
 
-## Deploy on Vercel
+### State management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The application is small but needs a lot of state to works correctly. That's why I've chose to use the React Context API in this application.

@@ -74,5 +74,3 @@ const CounterStatesProvider = ({ children }: PropsWithChildren) => {
 }
 
 export default CounterStatesProvider
-
-// TODO: valider la modal en pressant sur ENTRE
